@@ -223,51 +223,143 @@
     "collapsed": true,
     "items": [
       {
-        "text": "币种、网络与账户",
+        "text": "公用基础",
         "link": "/pages/0401",
         "collapsed": false,
         "items": [
           {
-            "text": "币种和网络",
-            "link": "/pages/0401#币种和网络"
+            "text": "币种与交易对",
+            "link": "/pages/0401#币种与交易对"
           },
           {
-            "text": "交易对",
-            "link": "/pages/0401#交易对"
+            "text": "委托、撮合与成交",
+            "link": "/pages/0401#委托、撮合与成交"
           },
           {
-            "text": "账户",
-            "link": "/pages/0401#账户"
+            "text": "内部账户与余额",
+            "link": "/pages/0401#内部账户与余额"
+          },
+          {
+            "text": "盘口、行情与 K 线",
+            "link": "/pages/0401#盘口、行情与 K 线"
+          },
+          {
+            "text": "接下来读什么",
+            "link": "/pages/0401#接下来读什么"
           }
         ]
       },
       {
-        "text": "委托、撮合与成交",
+        "text": "现货相关",
         "link": "/pages/0402",
         "collapsed": false,
         "items": [
           {
-            "text": "三个对象",
-            "link": "/pages/0402#三个对象"
+            "text": "交易方向与订单",
+            "link": "/pages/0402#交易方向与订单"
           },
           {
-            "text": "状态与数量",
-            "link": "/pages/0402#状态与数量"
+            "text": "资金与费用",
+            "link": "/pages/0402#资金与费用"
           },
           {
-            "text": "盘口、行情与 K 线",
-            "link": "/pages/0402#盘口、行情与 K 线"
+            "text": "规则边界",
+            "link": "/pages/0402#规则边界"
           }
         ]
       },
       {
-        "text": "现货、合约与期权",
+        "text": "合约相关",
         "link": "/pages/0403",
         "collapsed": false,
         "items": [
           {
-            "text": "期权用语的边界",
-            "link": "/pages/0403#期权用语的边界"
+            "text": "仓位与开平",
+            "link": "/pages/0403#仓位与开平"
+          },
+          {
+            "text": "杠杆与保证金",
+            "link": "/pages/0403#杠杆与保证金"
+          },
+          {
+            "text": "价格与风险",
+            "link": "/pages/0403#价格与风险"
+          }
+        ]
+      },
+      {
+        "text": "期权相关",
+        "link": "/pages/0404",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "产品与周期",
+            "link": "/pages/0404#产品与周期"
+          },
+          {
+            "text": "价格、订单与结算",
+            "link": "/pages/0404#价格、订单与结算"
+          },
+          {
+            "text": "用语边界",
+            "link": "/pages/0404#用语边界"
+          }
+        ]
+      },
+      {
+        "text": "钱包账务",
+        "link": "/pages/0405",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "链上对象",
+            "link": "/pages/0405#链上对象"
+          },
+          {
+            "text": "充提与归集",
+            "link": "/pages/0405#充提与归集"
+          },
+          {
+            "text": "内部账务衔接",
+            "link": "/pages/0405#内部账务衔接"
+          }
+        ]
+      },
+      {
+        "text": "OTC相关",
+        "link": "/pages/0406",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "参与者与挂单",
+            "link": "/pages/0406#参与者与挂单"
+          },
+          {
+            "text": "订单过程",
+            "link": "/pages/0406#订单过程"
+          }
+        ]
+      },
+      {
+        "text": "其他相关",
+        "link": "/pages/0407",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "用户与权限",
+            "link": "/pages/0407#用户与权限"
+          },
+          {
+            "text": "商户与后台",
+            "link": "/pages/0407#商户与后台"
+          },
+          {
+            "text": "运营与量化",
+            "link": "/pages/0407#运营与量化"
+          },
+          {
+            "text": "风控与报表",
+            "link": "/pages/0407#风控与报表"
           }
         ]
       }

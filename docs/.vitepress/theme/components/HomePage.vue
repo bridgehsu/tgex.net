@@ -7,7 +7,7 @@ const businesses = [
   { n: '05', title: 'OTC 交易', en: 'OTC', desc: '理解商家、付款确认、托管放币和争议处理。', link: '/pages/1101', tags: '广告 / 托管 / 申诉', icon: 'M4 7h15l-3-3m3 3-3 3M20 17H5l3 3m-3-3 3-3' }
 ]
 const steps = [
-  { n: '01', title: '建立业务认知', desc: '先弄清订单、成交、账户与资产。', link: '/pages/0402' },
+  { n: '01', title: '建立业务认知', desc: '先弄清订单、成交、账户与资产。', link: '/pages/0401' },
   { n: '02', title: '理解系统协作', desc: '看模块职责与数据如何流转。', link: '/pages/0301' },
   { n: '03', title: '跟完一笔交易', desc: '把订单状态和资金变化串起来。', link: '/pages/0705' },
   { n: '04', title: '补全异常路径', desc: '理解超时、重试、对账与恢复。', link: '/pages/0603' }
