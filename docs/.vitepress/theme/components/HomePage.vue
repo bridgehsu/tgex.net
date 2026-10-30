@@ -9,7 +9,7 @@ const businesses = [
 const steps = [
   { n: '01', title: '建立业务认知', desc: '先弄清订单、成交、账户与资产。', link: '/pages/0401' },
   { n: '02', title: '理解系统协作', desc: '看模块职责与数据如何流转。', link: '/pages/0301' },
-  { n: '03', title: '跟完一笔交易', desc: '把订单状态和资金变化串起来。', link: '/pages/0705' },
+  { n: '03', title: '跟完一笔交易', desc: '把订单状态和资金变化串起来。', link: '/pages/070501' },
   { n: '04', title: '补全异常路径', desc: '理解超时、重试、对账与恢复。', link: '/pages/0603' }
 ]
 </script>
@@ -20,7 +20,7 @@ const steps = [
       <div class="eyebrow"><span class="status-dot"></span> TGEX / ENGINEERING DOCUMENTATION</div>
       <h1>看懂交易所，<br>从<span>一笔交易</span>开始。</h1>
       <p class="hero-description">连接业务规则、系统架构与核心流程。<br>为想理解交易所如何运作的你，建立一张完整的知识地图。</p>
-      <div class="hero-actions"><a class="primary-action" href="/pages/0104">开始阅读 <span aria-hidden="true">↗</span></a><a class="secondary-action" href="/pages/0705">跟完一笔现货交易 <span aria-hidden="true">→</span></a></div>
+      <div class="hero-actions"><a class="primary-action" href="/pages/0104">开始阅读 <span aria-hidden="true">↗</span></a><a class="secondary-action" href="/pages/070501">跟完一笔现货交易 <span aria-hidden="true">→</span></a></div>
       <div class="hero-facts"><span><b>05</b> 核心业务</span><span><b>18</b> 知识栏目</span><span><b>60</b> 专题文档</span></div>
     </div>
     <div class="architecture-card" aria-label="一笔交易的系统协作示意">

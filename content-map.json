@@ -154,7 +154,29 @@
         },
         {
           "text": "核心交易流程",
-          "link": "/pages/0705"
+          "collapsed": false,
+          "items": [
+            {
+              "text": "业务流程",
+              "link": "/pages/070501"
+            },
+            {
+              "text": "coinex-entrust 启动流程",
+              "link": "/pages/070502"
+            },
+            {
+              "text": "coinex-match 启动流程",
+              "link": "/pages/070503"
+            },
+            {
+              "text": "coinex-account 启动流程",
+              "link": "/pages/070504"
+            },
+            {
+              "text": "coinex-market 启动流程",
+              "link": "/pages/070505"
+            }
+          ]
         },
         {
           "text": "行情与推送",
@@ -163,22 +185,6 @@
         {
           "text": "异常处理与一致性保障",
           "link": "/pages/0707"
-        },
-        {
-          "text": "coinex-entrust 启动流程",
-          "link": "/pages/0708"
-        },
-        {
-          "text": "coinex-match 启动流程",
-          "link": "/pages/0709"
-        },
-        {
-          "text": "coinex-account 启动流程",
-          "link": "/pages/0710"
-        },
-        {
-          "text": "coinex-market 启动流程",
-          "link": "/pages/0711"
         }
       ]
     },
@@ -718,17 +724,70 @@
       ]
     },
     {
-      "path": "/pages/0705",
-      "title": "核心交易流程",
-      "group": "现货手册",
-      "source": "07.现货手册/05.核心交易流程.md",
-      "code": "0705",
+      "path": "/pages/070501",
+      "title": "业务流程",
+      "group": "现货手册 / 核心交易流程",
+      "source": "07.现货手册/05.核心交易流程/01.业务流程.md",
+      "code": "070501",
       "headings": [
         "complete",
         "place",
         "match",
         "settle",
         "cancel"
+      ]
+    },
+    {
+      "path": "/pages/070502",
+      "title": "coinex-entrust 启动流程",
+      "group": "现货手册 / 核心交易流程",
+      "source": "07.现货手册/05.核心交易流程/02.coinex-entrust 启动流程.md",
+      "code": "070502",
+      "headings": [
+        "职责边界",
+        "前置依赖",
+        "启动步骤",
+        "启动后检查",
+        "与交易闭环的关系"
+      ]
+    },
+    {
+      "path": "/pages/070503",
+      "title": "coinex-match 启动流程",
+      "group": "现货手册 / 核心交易流程",
+      "source": "07.现货手册/05.核心交易流程/03.coinex-match 启动流程.md",
+      "code": "070503",
+      "headings": [
+        "职责边界",
+        "前置依赖",
+        "启动步骤",
+        "启动后检查"
+      ]
+    },
+    {
+      "path": "/pages/070504",
+      "title": "coinex-account 启动流程",
+      "group": "现货手册 / 核心交易流程",
+      "source": "07.现货手册/05.核心交易流程/04.coinex-account 启动流程.md",
+      "code": "070504",
+      "headings": [
+        "职责边界",
+        "前置依赖",
+        "启动步骤",
+        "启动后检查"
+      ]
+    },
+    {
+      "path": "/pages/070505",
+      "title": "coinex-market 启动流程",
+      "group": "现货手册 / 核心交易流程",
+      "source": "07.现货手册/05.核心交易流程/05.coinex-market 启动流程.md",
+      "code": "070505",
+      "headings": [
+        "职责边界",
+        "前置依赖",
+        "启动步骤",
+        "启动后检查"
       ]
     },
     {
@@ -753,59 +812,6 @@
         "scenarios",
         "example",
         "check"
-      ]
-    },
-    {
-      "path": "/pages/0708",
-      "title": "coinex-entrust 启动流程",
-      "group": "现货手册",
-      "source": "07.现货手册/08.coinex-entrust 启动流程.md",
-      "code": "0708",
-      "headings": [
-        "职责边界",
-        "前置依赖",
-        "启动步骤",
-        "启动后检查",
-        "与交易闭环的关系"
-      ]
-    },
-    {
-      "path": "/pages/0709",
-      "title": "coinex-match 启动流程",
-      "group": "现货手册",
-      "source": "07.现货手册/09.coinex-match 启动流程.md",
-      "code": "0709",
-      "headings": [
-        "职责边界",
-        "前置依赖",
-        "启动步骤",
-        "启动后检查"
-      ]
-    },
-    {
-      "path": "/pages/0710",
-      "title": "coinex-account 启动流程",
-      "group": "现货手册",
-      "source": "07.现货手册/10.coinex-account 启动流程.md",
-      "code": "0710",
-      "headings": [
-        "职责边界",
-        "前置依赖",
-        "启动步骤",
-        "启动后检查"
-      ]
-    },
-    {
-      "path": "/pages/0711",
-      "title": "coinex-market 启动流程",
-      "group": "现货手册",
-      "source": "07.现货手册/11.coinex-market 启动流程.md",
-      "code": "0711",
-      "headings": [
-        "职责边界",
-        "前置依赖",
-        "启动步骤",
-        "启动后检查"
       ]
     },
     {

@@ -61,6 +61,23 @@ async function main() {
     }
   }
 
+  // Aliases after nesting 现货「核心交易流程」under /pages/0705xx
+  const aliases = {
+    '/pages/0705': '/pages/070501',
+    '/pages/0708': '/pages/070502',
+    '/pages/0709': '/pages/070503',
+    '/pages/0710': '/pages/070504',
+    '/pages/0711': '/pages/070505'
+  }
+  for (const [from, to] of Object.entries(aliases)) {
+    if (!valid.has(to)) continue
+    const rel = `${from.replace(/^\//, '')}.html`
+    const file = join(dist, rel)
+    await mkdir(dirname(file), { recursive: true })
+    await writeFile(file, html(to))
+    count++
+  }
+
   console.log(`Wrote ${count} legacy redirect files under dist/`)
 }
 
