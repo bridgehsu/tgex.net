@@ -163,6 +163,22 @@
         {
           "text": "异常处理与一致性保障",
           "link": "/pages/0707"
+        },
+        {
+          "text": "coinex-entrust 启动流程",
+          "link": "/pages/0708"
+        },
+        {
+          "text": "coinex-match 启动流程",
+          "link": "/pages/0709"
+        },
+        {
+          "text": "coinex-account 启动流程",
+          "link": "/pages/0710"
+        },
+        {
+          "text": "coinex-market 启动流程",
+          "link": "/pages/0711"
         }
       ]
     },
@@ -737,6 +753,59 @@
         "scenarios",
         "example",
         "check"
+      ]
+    },
+    {
+      "path": "/pages/0708",
+      "title": "coinex-entrust 启动流程",
+      "group": "现货手册",
+      "source": "07.现货手册/08.coinex-entrust 启动流程.md",
+      "code": "0708",
+      "headings": [
+        "职责边界",
+        "前置依赖",
+        "启动步骤",
+        "启动后检查",
+        "与交易闭环的关系"
+      ]
+    },
+    {
+      "path": "/pages/0709",
+      "title": "coinex-match 启动流程",
+      "group": "现货手册",
+      "source": "07.现货手册/09.coinex-match 启动流程.md",
+      "code": "0709",
+      "headings": [
+        "职责边界",
+        "前置依赖",
+        "启动步骤",
+        "启动后检查"
+      ]
+    },
+    {
+      "path": "/pages/0710",
+      "title": "coinex-account 启动流程",
+      "group": "现货手册",
+      "source": "07.现货手册/10.coinex-account 启动流程.md",
+      "code": "0710",
+      "headings": [
+        "职责边界",
+        "前置依赖",
+        "启动步骤",
+        "启动后检查"
+      ]
+    },
+    {
+      "path": "/pages/0711",
+      "title": "coinex-market 启动流程",
+      "group": "现货手册",
+      "source": "07.现货手册/11.coinex-market 启动流程.md",
+      "code": "0711",
+      "headings": [
+        "职责边界",
+        "前置依赖",
+        "启动步骤",
+        "启动后检查"
       ]
     },
     {
