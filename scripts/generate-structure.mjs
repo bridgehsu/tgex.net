@@ -1,6 +1,6 @@
 /**
  * Rebuild sidebar + rewrites from docs/NN.标题 trees only.
- * Nested sidebar items come from each page's ## headings (not old nav).
+ * Sidebar is section → page only; in-page ## headings use the outline ("本页内容").
  * Public URL: /pages/{sectionNo}{pageNo}  e.g. 01.项目介绍/01.项目概述 → /pages/0101
  */
 import { readdir, readFile, writeFile } from 'node:fs/promises'
@@ -70,18 +70,9 @@ async function main() {
       const publicPath = `/pages/${code}`
       rewrites[sourceRel] = publicMd
 
+      // H2 headings stay in page outline ("本页内容") only — not as sidebar level-3.
       const headings = await extractH2(join(docs, sectionDir, file))
-      const sideItem = { text: title, link: publicPath }
-      if (headings.length) {
-        // Keep H2 children expanded so the sidebar shows clear hierarchy by default.
-        sideItem.collapsed = false
-        sideItem.items = headings.map((h) => ({
-          text: h.text,
-          link: `${publicPath}#${h.id}`
-        }))
-      }
-
-      items.push(sideItem)
+      items.push({ text: title, link: publicPath })
       pages.push({
         path: publicPath,
         title,
@@ -102,18 +93,13 @@ async function main() {
   const sections = sidebar.map((section, index) => ({
     key: `section-${String(index + 1).padStart(2, '0')}`,
     text: section.text,
-    items: section.items.map((item) => {
-      const node = { text: item.text, link: item.link }
-      if (item.items) node.items = item.items
-      return node
-    })
+    items: section.items.map((item) => ({ text: item.text, link: item.link }))
   }))
 
   await writeFile(structurePath, JSON.stringify({ rewrites, pages }, null, 2) + '\n')
   await writeFile(navPath, JSON.stringify(sidebar, null, 2) + '\n')
   await writeFile(mapPath, JSON.stringify({ sections, pages }, null, 2) + '\n')
-  const nested = sidebar.reduce((n, s) => n + s.items.filter((i) => i.items?.length).length, 0)
-  console.log(`Generated structure for ${pages.length} pages / ${sidebar.length} sections (${nested} with H2 children)`)
+  console.log(`Generated structure for ${pages.length} pages / ${sidebar.length} sections (sidebar: section → page)`)
   console.log(`Example: ${pages[0]?.source} -> ${pages[0]?.path}`)
 }
 
