@@ -288,6 +288,17 @@ nav[aria-label="文章面包屑"] + nav[aria-label="面包屑"]{display:none!imp
 .flow-diagram li{margin:0!important;background:var(--vp-c-bg);border:1px solid var(--vp-c-divider);border-radius:5px;padding:11px 12px;display:flex;flex:1 1 120px;gap:9px;align-items:center;position:relative;font-size:12px;line-height:1.6}
 .flow-diagram li:not(:last-child):after{content:'→';position:absolute;right:-18px;color:var(--vp-c-brand-1);font-size:13px}
 .flow-number{color:var(--vp-c-brand-1);font-family:monospace;font-size:10px;align-self:flex-start;padding-top:2px}
+.flow-board{border:1px solid var(--vp-c-divider);border-radius:9px;background:var(--vp-c-bg-soft);padding:20px;margin:28px 0}
+.flow-board figcaption{font-size:9px;color:var(--vp-c-brand-1);font-weight:650;letter-spacing:1.2px;display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.flow-board figcaption span{font-size:10px;color:var(--vp-c-text-3);letter-spacing:0;font-weight:400}
+.flow-board-steps{list-style:none!important;padding:0!important;margin:0!important;display:flex;flex-direction:column;gap:10px}
+.flow-board-steps li{margin:0!important;background:var(--vp-c-bg);border:1px solid var(--vp-c-divider);border-radius:6px;padding:12px 14px;font-size:13px;line-height:1.55;position:relative}
+.flow-board-steps li:not(:last-child):after{content:'↓';display:block;text-align:center;color:var(--vp-c-brand-1);margin:8px 0 -2px;font-size:14px;line-height:1}
+.flow-board-branch{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.flow-board-branch>div{background:var(--vp-c-bg);border:1px solid var(--vp-c-divider);border-radius:6px;padding:14px}
+.flow-board-branch strong{display:block;font-size:13px;color:var(--vp-c-brand-1);margin-bottom:6px}
+.flow-board-branch p{margin:0!important;font-size:12.5px;line-height:1.7;color:var(--vp-c-text-2)}
+@media(max-width:600px){.flow-board-branch{grid-template-columns:1fr}}
 .ledger-demo{margin:30px 0;padding:24px;border:1px solid var(--vp-c-divider);border-radius:10px;background:var(--vp-c-bg-soft)}
 .demo-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}.vp-doc .demo-heading h3{font-size:19px;margin:7px 0 0;line-height:1.5}
 .example-tag{font-size:10px;white-space:nowrap;color:var(--vp-c-brand-1);background:var(--vp-c-brand-soft);padding:3px 9px;border-radius:4px}

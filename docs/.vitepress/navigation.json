@@ -160,19 +160,19 @@
             "link": "/pages/070501"
           },
           {
-            "text": "coinex-entrust 启动流程",
+            "text": "委托初始化链路",
             "link": "/pages/070502"
           },
           {
-            "text": "coinex-match 启动流程",
+            "text": "撮合初始化链路",
             "link": "/pages/070503"
           },
           {
-            "text": "coinex-account 启动流程",
+            "text": "账务初始化链路",
             "link": "/pages/070504"
           },
           {
-            "text": "coinex-market 启动流程",
+            "text": "行情初始化链路",
             "link": "/pages/070505"
           }
         ]
