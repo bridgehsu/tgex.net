@@ -1,0 +1,24 @@
+@startuml 账务初始化链路
+skinparam shadowing false
+skinparam ActivityBorderColor #333
+skinparam ActivityBackgroundColor #F7F7F5
+
+title 账务初始化链路（进程起来之后）
+
+start
+:配置与连接池就绪;
+
+fork
+  :account-provider;
+  :导出账务 Dubbo 服务;
+  :注册 EventBus · 订阅资产 MQ;
+  :心跳探库 · 进程保活;
+  :按请求懒加载与改账\n（无全站钱包预热）;
+fork again
+  :account-batch;
+  :ApplicationRunner\n拉起扫描循环;
+  :消化 pending · 补偿 · 迁 ES;
+end fork
+
+stop
+@enduml

@@ -1,0 +1,24 @@
+@startuml 行情初始化链路
+skinparam shadowing false
+skinparam ActivityBorderColor #333
+skinparam ActivityBackgroundColor #F7F7F5
+
+title 行情初始化链路（进程起来之后）
+
+start
+:预热汇率等轻量缓存;
+
+if (Redis 是否已有交易对?) then (有 · 热加载)
+  :从 Redis 灌交易对 · 深度 · K 线;
+  :主线程等待热路径加载齐;
+else (无 · 冷 / 备份)
+  :备份表或冷启动\n灌 Redis + 内存;
+  :各交易对可异步初始化;
+endif
+
+:注册 EventBus\n（K 线 Job 等）;
+:启动推送调度;
+:打开 Job 开关 · 启动 Netty;
+
+stop
+@enduml

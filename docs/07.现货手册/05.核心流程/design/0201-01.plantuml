@@ -1,0 +1,17 @@
+@startuml 委托初始化链路
+skinparam shadowing false
+skinparam ActivityBorderColor #333
+skinparam ActivityBackgroundColor #F7F7F5
+
+title 委托初始化链路（进程起来之后）
+
+start
+:Apollo 与基础设施就绪\nDB · Redis · ES · MQ · Dubbo;
+:导出委托 Dubbo 接口;
+:注册 EventBus 与 MQ 消费;
+:心跳探库;
+:进程保活\n（无全量灌交易对 / 订单簿）;
+:首次业务请求时\n懒加载交易对 · 费率等;
+
+stop
+@enduml

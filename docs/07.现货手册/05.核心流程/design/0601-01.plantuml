@@ -1,0 +1,23 @@
+@startuml 下单主流程
+skinparam shadowing false
+skinparam ActivityBorderColor #333
+skinparam ActivityBackgroundColor #F7F7F5
+
+title 下单主流程（平台限价 · 已开放接单）
+
+start
+:入口受理\nApp / API → 委托 V1;
+:委托侧校验\n用户 · 交易对 · 精度 · 限额 · 涨跌幅等;
+:余额预检（读撮合钱包，不冻结）;
+
+if (校验 / 预检通过?) then (是)
+  :调撮合「下单」RPC;
+  :撮合：可用 → 冻结\n写委托热数据 + Redis 缓冲;
+  :进入订单簿入口\n（比价见撮合主流程）;
+  :同步返回委托编号\n已受理 ≠ 已全部成交;
+else (否)
+  :拒单\n未调撮合 / 未冻结;
+endif
+
+stop
+@enduml
