@@ -6,18 +6,18 @@ skinparam ActivityBackgroundColor #F7F7F5
 title 账务初始化链路（进程起来之后）
 
 start
-:配置与连接池就绪;
+:配置与存储通道就绪;
 
 fork
-  :account-provider;
-  :导出账务 Dubbo 服务;
-  :注册 EventBus · 订阅资产 MQ;
-  :心跳探库 · 进程保活;
-  :按请求懒加载与改账\n（无全站钱包预热）;
+  :在线账务;
+  :对外提供改账能力;
+  :订阅资产相关消息;
+  :探活并保持在线;
+  :按请求改账\n（不预热全站钱包）;
 fork again
-  :account-batch;
-  :ApplicationRunner\n拉起扫描循环;
-  :消化 pending · 补偿 · 迁 ES;
+  :账务批处理;
+  :启动后开始循环扫描;
+  :消化待入账流水\n补偿 · 检索同步;
 end fork
 
 stop

@@ -6,12 +6,12 @@ skinparam ActivityBackgroundColor #F7F7F5
 title 委托初始化链路（进程起来之后）
 
 start
-:Apollo 与基础设施就绪\nDB · Redis · ES · MQ · Dubbo;
-:导出委托 Dubbo 接口;
-:注册 EventBus 与 MQ 消费;
-:心跳探库;
-:进程保活\n（无全量灌交易对 / 订单簿）;
-:首次业务请求时\n懒加载交易对 · 费率等;
+:配置与存储通道就绪;
+:对外提供委托能力\n下单 · 撤单 · 查询等;
+:挂上消息与内部事件消费;
+:探活确认库可用;
+:保持进程在线\n（不预热全站委托 / 交易对）;
+:第一次真实请求时\n再装交易对 · 费率等;
 
 stop
 @enduml

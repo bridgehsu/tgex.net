@@ -1,0 +1,23 @@
+@startuml 撤单主流程
+skinparam shadowing false
+skinparam ActivityBorderColor #333
+skinparam ActivityBackgroundColor #F7F7F5
+
+title 撤单主流程（平台撮合 · 单笔）
+
+start
+:入口受理\nApp / API → 委托撤单;
+:查当前委托\n（撮合侧热数据）;
+
+if (能撤?) then (是)
+  :调撮合「撤单」;
+  :撮合：出簿\n扣减深度;
+  :剩余冻结 → 可用;
+  :委托置为已撤销\n更新缓冲并移出热数据;
+  :同步返回成功\n（深度变化随后推送）;
+else (否)
+  :拒绝\n无单 / 已终态等;
+endif
+
+stop
+@enduml

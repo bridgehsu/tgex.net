@@ -1,0 +1,29 @@
+@startuml 行情推送流程
+skinparam shadowing false
+skinparam ActivityBorderColor #333
+skinparam ActivityBackgroundColor #F7F7F5
+
+title 行情推送流程（交易对已可推）
+
+start
+:业务事件进入行情侧\n挂单 · 成交 · 撤单 · 或约定行情源;
+
+if (数据类型?) then (深度)
+  :按价位汇总未成交量\n得到盘口档位;
+elseif (最新成交) then
+  :确认成交事实\n更新最新价意向;
+else (K 线)
+  :按时间窗口聚合\n更新对应周期;
+endif
+
+:写入行情缓存\n并标记可推内容;
+:按订阅分发\n推给已连接客户端;
+:客户端展示;
+
+if (断线或丢包?) then (是)
+  :先拉权威快照\n再接增量;
+else (否)
+endif
+
+stop
+@enduml
