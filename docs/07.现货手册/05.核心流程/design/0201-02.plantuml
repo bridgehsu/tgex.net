@@ -1,0 +1,65 @@
+@startuml 下单主流程时序
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+skinparam ParticipantBorderColor #333
+skinparam ParticipantBackgroundColor #F7F7F5
+skinparam SequenceLifeLineBorderColor #666
+skinparam ArrowColor #333
+
+title 下单主流程时序（平台限价 · 已开放接单）
+
+actor "用户 / 机器人" as Client
+participant "应用网关" as Gateway
+participant "委托系统" as Entrust
+participant "撮合系统" as Match
+participant "行情系统" as Market
+
+== 同步受理 ==
+
+Client -> Gateway: 提交限价单\n(方向 · 交易对 · 价 · 量)
+Gateway -> Entrust: 转发下单请求
+
+activate Entrust
+Entrust -> Entrust: 校验\n用户 · 交易对 · 精度 · 限额 · 涨跌幅等
+
+alt 校验失败
+  Entrust --> Gateway: 拒单
+  Gateway --> Client: 失败（未调撮合 / 未冻结）
+else 校验通过
+  Entrust -> Match: 余额预检（只读钱包快照）
+  activate Match
+  Match --> Entrust: 可用是否足够
+  deactivate Match
+
+  alt 预检失败
+    Entrust --> Gateway: 拒单
+    Gateway --> Client: 失败（未调撮合 / 未冻结）
+  else 预检通过
+    Entrust -> Match: 调撮合「下单」
+    activate Match
+    Match -> Match: 可用 → 冻结\n写委托热数据 + Redis 缓冲
+    Match -> Match: 进入订单簿入口\n(比价 / 挂剩见撮合主流程)
+    Match --> Entrust: 成功 + 委托编号\n(已受理 ≠ 已全部成交)
+    deactivate Match
+
+    Entrust --> Gateway: 返回委托编号
+    Gateway --> Client: 下单成功（已受理）
+
+    == 异步旁路（不阻塞同步响应） ==
+
+    Match -> Market: 深度 / 成交事件\n(经消息队列)
+    activate Market
+    Market -> Market: 加工盘口 / 最新成交 / K 线
+    Market --> Client: 按订阅推送展示\n(权威结果仍以委托 / 撮合为准)
+    deactivate Market
+  end
+end
+deactivate Entrust
+
+note over Client, Market
+  同步成功只表示：资金已占用、委托已建立、已进入撮合处理链。
+  是否成交、深度如何变化，随后由撮合与行情旁路完成。
+end note
+
+@enduml

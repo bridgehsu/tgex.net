@@ -1,31 +1,24 @@
-@startuml 撮合主流程
+@startuml 行情初始化链路
 skinparam shadowing false
 skinparam ActivityBorderColor #333
 skinparam ActivityBackgroundColor #F7F7F5
 
-title 撮合主流程（交易对已开放）
+title 行情初始化链路（进程起来之后）
 
 start
-:事件进入撮合处理链\n下单 / 撤单;
+:预热汇率等轻量数据;
 
-if (下单?) then (是)
-  :冻结并写委托热数据\n+ Redis 缓冲;
-  :进入订单簿;
-  while (对手最优价可成交\n且仍有剩余?) is (是)
-    :成交：更新双方\n账务 · 状态 · 明细;
-  endwhile (否)
-  if (仍有剩余?) then (是)
-    :限价挂簿;
-  else (否)
-    :整单出簿 / 完全成交;
-  endif
-else (撤单)
-  :从簿上移除未成交量;
-  :剩余冻结 → 可用;
-  :委托终态已撤销;
+if (缓存里是否已有交易对行情?) then (有 · 热恢复)
+  :灌入交易对 · 深度 · K 线等;
+  :等热路径装齐再继续;
+else (无 · 冷恢复 / 备份)
+  :从备份或源头重建行情;
+  :各交易对可陆续装齐;
 endif
 
-:深度 / 成交入 MQ 队列;
-:Redis 缓冲异步 → MySQL;
+:挂上行情相关内部事件;
+:开始按订阅推送盘口与曲线;
+:打开定时任务 · 打开行情推送通道;
+
 stop
 @enduml

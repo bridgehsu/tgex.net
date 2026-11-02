@@ -1,0 +1,59 @@
+@startuml 撤单主流程时序
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+skinparam ParticipantBorderColor #333
+skinparam ParticipantBackgroundColor #F7F7F5
+skinparam SequenceLifeLineBorderColor #666
+skinparam ArrowColor #333
+
+title 撤单主流程时序（平台撮合 · 单笔 · 已开放接单）
+
+actor "用户 / 机器人" as Client
+participant "应用网关" as Gateway
+participant "委托系统" as Entrust
+participant "撮合系统" as Match
+participant "行情系统" as Market
+
+== 同步受理 ==
+
+Client -> Gateway: 发起撤单\n(委托编号 / 客户端订单号)
+Gateway -> Entrust: 转发撤单请求
+
+activate Entrust
+Entrust -> Match: 查当前委托\n(撮合侧热数据)
+activate Match
+Match --> Entrust: 委托是否存在、是否可撤
+deactivate Match
+
+alt 不可撤（无单 / 已终态等）
+  Entrust --> Gateway: 拒绝
+  Gateway --> Client: 失败（未出簿 / 未解冻）
+else 可撤
+  Entrust -> Match: 调撮合「撤单」
+  activate Match
+  Match -> Match: 出簿 · 扣减深度
+  Match -> Match: 剩余冻结 → 可用
+  Match -> Match: 委托置为已撤销\n更新缓冲并移出热数据
+  Match --> Entrust: 成功\n(撤单在撮合侧已落定)
+  deactivate Match
+
+  Entrust --> Gateway: 返回成功
+  Gateway --> Client: 撤单成功
+
+  == 异步旁路（不阻塞同步响应） ==
+
+  Match -> Market: 深度变化事件\n(经消息队列)
+  activate Market
+  Market -> Market: 加工盘口等展示数据
+  Market --> Client: 按订阅推送展示\n(权威结果仍以委托 / 撮合为准)
+  deactivate Market
+end
+deactivate Entrust
+
+note over Client, Market
+  同步成功只表示：若曾在簿上已出簿、剩余占用已解冻、委托已撤销。
+  深度如何变化，随后由行情旁路推送；解冻发生在出簿时，不在客户端点击瞬间。
+end note
+
+@enduml
