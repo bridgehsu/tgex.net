@@ -61,9 +61,11 @@ async function main() {
     }
   }
 
-  // Aliases after nesting 现货「核心交易流程」under /pages/0705xx
+  // Aliases after nesting 现货「核心流程」under /pages/0705xx
+  // 旧「一笔交易案例」/pages/070501 已并入现货首页业务概述
   const aliases = {
-    '/pages/0705': '/pages/070501',
+    '/pages/0705': '/pages/070502',
+    '/pages/070501': '/pages/0701',
     '/pages/0708': '/pages/070502',
     '/pages/0709': '/pages/070503',
     '/pages/0710': '/pages/070504',

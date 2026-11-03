@@ -4,7 +4,7 @@
  * In-page ## headings use the outline ("本页内容"), not sidebar nesting.
  * Public URL:
  *   flat  01.项目介绍/01.项目概述.md → /pages/0101
- *   group 07.现货手册/05.核心交易流程/01.业务流程.md → /pages/070501
+ *   group 07.现货手册/05.核心流程/02.下单主流程.md → /pages/070502
  */
 import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { join, dirname } from 'node:path'
